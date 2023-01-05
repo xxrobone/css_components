@@ -1,0 +1,81 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #cecece;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  .card {
+    display: grid;
+    width: 260px;
+    height: 320px;
+    text-decoration: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  
+    opacity: 0;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.1), rgb(0, 0, 0, 0.6) 60%);
+    transition: .3s ease;
+    z-index: 1;
+  }
+  
+  .card:is(:hover, :focus)::before {
+    opacity: 1;
+  }
+  
+  .card_img {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    
+  }
+  
+  .card_img img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  .card_content {
+    display: grid;
+    justify-self: end;
+    gap: 0.5em;
+    padding: 4rem 1.5rem 2rem;
+    color: white;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: 0.3s ease;
+    z-index: 10;
+  }
+  
+  .card:is(:hover, :focus) .card_content {
+    transform: translateY(0%);
+    opacity: 1;
+    /* for "after delay" effect */
+    transition: all 0.3s ease;
+  }
+  
+  .card_title {
+    font-size: 1.5rem;
+  }
+  
